@@ -10,7 +10,6 @@ export default function FileUploadForm() {
   const handleFileChange = (event) => {
     setFile(event.target.files[0]);
   };
-
   /**
    * 
    * @param {Event} event 
@@ -27,15 +26,24 @@ export default function FileUploadForm() {
   };
 
   return (
-    <form id='main-form' onSubmit={handleSubmit}>
-      <input 
-        type="file" 
-        accept=".csv" 
-        onChange={handleFileChange} 
-        style={inputStyle}
-      />
-      <button type="submit" style={buttonStyle}>Upload</button>
-    </form>
+    <div class="home">
+      <div className="title-container">
+        Portfolio Builder
+      </div>
+      <div className="form-container">
+        <form id='main-form' onSubmit={handleSubmit}>
+          <input
+            id='in-csv'
+            type="file"
+            accept=".csv"
+            onChange={handleFileChange}
+            style={inputStyle}
+          />
+          <label className='in-file' htmlFor='in-csv' data-valid={file != null}>{file == null ? "Choose File" : file.name}</label>
+          <button type="submit" style={buttonStyle}>Upload</button>
+        </form>
+      </div>
+    </div>
   );
 }
 
@@ -48,4 +56,3 @@ const buttonStyle = {
   fontSize: '1rem',
   cursor: 'pointer'
 };
- 
